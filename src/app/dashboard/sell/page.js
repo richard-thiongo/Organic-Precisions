@@ -73,12 +73,12 @@ export default function SellPage() {
               <X className="w-5 h-5" />
             </button>
           )}
-          <div className="flex items-center gap-2 font-bold text-lg">
-            <ShoppingBag className="w-5 h-5 text-primary" />
+        <div className="flex items-center gap-2 font-bold text-xl">
+            <ShoppingBag className="w-6 h-6 text-primary" />
             Cart ({cartItemCount})
           </div>
         </div>
-        <button onClick={clearCart} className="text-xs font-black text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 px-2 py-1 rounded-md transition-colors uppercase tracking-widest">
+        <button onClick={clearCart} className="text-xs font-black text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 px-3 py-1.5 rounded-md transition-colors uppercase tracking-widest">
           Clear All
         </button>
       </div>
@@ -87,24 +87,24 @@ export default function SellPage() {
         {items.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-neutral-400 space-y-4 italic">
             <div className="p-6 rounded-full bg-neutral-100 dark:bg-neutral-900">
-              <ShoppingBag className="w-12 h-12 opacity-20" />
+              <ShoppingBag className="w-16 h-16 opacity-20" />
             </div>
-            <p className="font-medium text-base">No items in the cart yet</p>
+            <p className="font-medium text-lg">No items in the cart yet</p>
           </div>
         ) : (
           items.map((item) => (
             <div key={item.variant_id} className="flex items-center gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-right-4 duration-300">
               <div className="flex-1 min-w-0">
-                <p className="font-bold truncate text-base">{item.name}</p>
-                <p className="text-sm text-primary font-mono font-bold">{formatKsh(item.price)}</p>
+                <p className="font-bold truncate text-lg">{item.name}</p>
+                <p className="text-base text-primary font-mono font-bold">{formatKsh(item.price)}</p>
               </div>
               <div className="flex items-center gap-2 bg-white dark:bg-neutral-950 rounded-xl border border-neutral-200 dark:border-neutral-800 p-1">
                 <button onClick={() => updateQuantity(item.variant_id, item.quantity - 1)} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
-                  <Minus className="w-4 h-4" />
+                  <Minus className="w-5 h-5" />
                 </button>
-                <span className="w-8 text-center font-bold text-base">{item.quantity}</span>
+                <span className="w-8 text-center font-bold text-lg">{item.quantity}</span>
                 <button onClick={() => updateQuantity(item.variant_id, item.quantity + 1)} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-5 h-5" />
                 </button>
               </div>
               <button onClick={() => removeItem(item.variant_id)} className="p-2 text-neutral-400 hover:text-red-500 transition-colors">
@@ -120,32 +120,32 @@ export default function SellPage() {
           <div className="space-y-3">
             <button 
               onClick={() => setIsCalcOpen(!isCalcOpen)}
-              className="w-full flex items-center justify-between text-xs font-black uppercase tracking-widest text-neutral-400 hover:text-primary transition-colors"
+              className="w-full flex items-center justify-between text-sm font-black uppercase tracking-widest text-neutral-400 hover:text-primary transition-colors"
             >
               <span>{isCalcOpen ? "Hide Calculator" : "Show Change Calculator"}</span>
               <div className="h-px flex-1 mx-4 bg-neutral-200 dark:bg-neutral-800" />
             </button>
 
             {isCalcOpen && (
-              <div className="p-4 rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 shadow-inner space-y-3 animate-in slide-in-from-bottom-2 duration-300">
+              <div className="p-4 rounded-2xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 shadow-inner space-y-4 animate-in slide-in-from-bottom-2 duration-300">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black uppercase text-neutral-400">Amount Paid</label>
+                  <label className="text-xs font-black uppercase text-neutral-400">Amount Paid</label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-neutral-400">KSh</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-base font-bold text-neutral-400">KSh</span>
                     <input 
                       type="number"
                       placeholder="0.00"
                       value={amountPaid}
                       onChange={(e) => setAmountPaid(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono font-bold text-sm"
+                      className="w-full pl-14 pr-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono font-bold text-base"
                     />
                   </div>
                 </div>
                 
                 {parseFloat(amountPaid) > 0 && (
-                  <div className="flex justify-between items-center p-3 rounded-xl bg-primary/5 border border-primary/10">
-                    <span className="text-[10px] font-bold uppercase text-primary/60">Balance</span>
-                    <span className="font-mono font-black text-sm text-primary">
+                  <div className="flex justify-between items-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+                    <span className="text-xs font-bold uppercase text-primary/60">Balance</span>
+                    <span className="font-mono font-black text-base text-primary">
                       {formatKsh(Math.max(0, parseFloat(amountPaid) - getTotal()))}
                     </span>
                   </div>
@@ -155,12 +155,12 @@ export default function SellPage() {
           </div>
         )}
 
-        <div className="space-y-1">
-          <div className="flex justify-between items-center text-sm text-neutral-500 font-medium">
+        <div className="space-y-2">
+          <div className="flex justify-between items-center text-base text-neutral-500 font-medium">
             <span>Subtotal</span>
             <span>{formatKsh(getTotal())}</span>
           </div>
-          <div className="flex justify-between items-center text-2xl font-black tracking-tight pt-2 border-t border-neutral-200 dark:border-neutral-800 mt-2">
+          <div className="flex justify-between items-center text-3xl font-black tracking-tight pt-3 border-t border-neutral-200 dark:border-neutral-800 mt-3">
             <span>Total</span>
             <span className="text-primary underline underline-offset-4 decoration-primary/20">{formatKsh(getTotal())}</span>
           </div>
@@ -169,7 +169,7 @@ export default function SellPage() {
         <button
           disabled={items.length === 0 || processing}
           onClick={handleCheckout}
-          className={`w-full py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-xl shadow-primary/20 ${
+          className={`w-full py-5 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 transition-all shadow-xl shadow-primary/20 ${
             success 
               ? "bg-green-500 text-white shadow-green-500/20" 
               : "bg-primary text-primary-foreground hover:scale-[1.01] active:scale-[0.99] hover:shadow-2xl hover:shadow-primary/30"
@@ -200,9 +200,9 @@ export default function SellPage() {
         {/* Sticky Header Section */}
         <div className="sticky top-0 z-20 bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 p-4 lg:px-8 lg:py-4 space-y-4">
           <div className="flex justify-between items-center">
-            <div className="space-y-0.5">
-              <h1 className="text-xl font-bold tracking-tight">Point of Sale</h1>
-              <p className="text-[10px] uppercase font-bold text-neutral-400 tracking-widest">Organic Precisions</p>
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold tracking-tight">Point of Sale</h1>
+              <p className="text-xs uppercase font-bold text-neutral-400 tracking-widest">Organic Precisions</p>
             </div>
             {/* Cart Button (Visible only on smaller screens where sidebar is hidden) */}
             <button 
@@ -260,8 +260,8 @@ export default function SellPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pb-20">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col hover:shadow-xl hover:border-primary/30 transition-all">
-                  <h3 className="font-bold mb-4 truncate text-base">{product.name}</h3>
-                  <div className="space-y-3 mt-auto">
+                  <h3 className="font-bold mb-5 truncate text-lg">{product.name}</h3>
+                  <div className="space-y-4 mt-auto">
                     {product.variants?.map((v) => {
                       const cartItem = items.find(i => i.variant_id === v.id);
                       const isMaxed = cartItem && cartItem.quantity >= v.stock_quantity;
@@ -272,28 +272,28 @@ export default function SellPage() {
                           <button
                             onClick={() => addItem(v, product)}
                             disabled={isOutOfStock || isMaxed}
-                            className={`w-full flex items-center justify-between p-3 rounded-2xl border transition-all disabled:opacity-50 ${
+                            className={`w-full flex items-center justify-between p-4 rounded-2xl border transition-all disabled:opacity-50 ${
                               cartItem 
                                 ? isMaxed ? "bg-amber-50 border-amber-200" : "bg-primary/5 border-primary/50 shadow-sm" 
                                 : "bg-transparent border-neutral-100 dark:border-neutral-800 hover:border-primary/50 hover:bg-primary/5"
                             }`}
                           >
-                            <div className="flex flex-col items-start text-left">
+                            <div className="flex flex-col items-start text-left gap-1">
                               <div className="flex items-center gap-2">
-                                <span className="text-xs font-bold capitalize">{v.measurement_value} {v.measurement_unit}</span>
+                                <span className="text-sm font-bold capitalize">{v.measurement_value} {v.measurement_unit}</span>
                                 {cartItem && (
-                                  <span className={`text-[10px] px-2 py-0.5 rounded-md font-black animate-in zoom-in ${
+                                  <span className={`text-xs px-2.5 py-0.5 rounded-md font-black animate-in zoom-in ${
                                     isMaxed ? "bg-amber-500 text-white" : "bg-primary text-primary-foreground"
                                   }`}>
                                     {isMaxed ? "MAX" : cartItem.quantity}
                                   </span>
                                 )}
                               </div>
-                              <span className="text-[10px] text-neutral-400 font-medium uppercase tracking-wider">
+                              <span className="text-xs text-neutral-400 font-medium uppercase tracking-wider">
                                 {isOutOfStock ? "Out of Stock" : `${v.stock_quantity} in stock`}
                               </span>
                             </div>
-                            <span className="font-mono text-sm font-bold text-primary">{formatKsh(v.price)}</span>
+                            <span className="font-mono text-base font-bold text-primary">{formatKsh(v.price)}</span>
                           </button>
                           
                           {cartItem && (

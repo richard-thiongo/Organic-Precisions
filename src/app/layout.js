@@ -21,6 +21,7 @@ import { SessionGuard } from "@/ui/providers/session-guard";
 import { Header } from "@/ui/components/header";
 import { BottomNav } from "@/ui/components/bottom-nav";
 import { Toaster } from "sonner";
+import { ServerWakeup } from "@/ui/components/server-wakeup";
 
 export default function RootLayout({ children }) {
   return (
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <ServerWakeup />
         <ThemeProvider>
           <Toaster position="top-center" expand={false} richColors />
           <SessionGuard>
