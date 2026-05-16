@@ -78,7 +78,7 @@ export default function InventoryPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-tight whitespace-nowrap transition-all border ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-tight whitespace-nowrap transition-all border ${
                     activeCategory === cat
                       ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/10"
                       : "bg-white dark:bg-neutral-950 text-neutral-500 border-neutral-200 dark:border-neutral-800 hover:border-primary/20"

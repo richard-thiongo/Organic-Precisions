@@ -95,20 +95,20 @@ export default function SellPage() {
           items.map((item) => (
             <div key={item.variant_id} className="flex items-center gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-right-4 duration-300">
               <div className="flex-1 min-w-0">
-                <p className="font-bold truncate text-sm">{item.name}</p>
-                <p className="text-xs text-primary font-mono font-bold">{formatKsh(item.price)}</p>
+                <p className="font-bold truncate text-base">{item.name}</p>
+                <p className="text-sm text-primary font-mono font-bold">{formatKsh(item.price)}</p>
               </div>
               <div className="flex items-center gap-2 bg-white dark:bg-neutral-950 rounded-xl border border-neutral-200 dark:border-neutral-800 p-1">
-                <button onClick={() => updateQuantity(item.variant_id, item.quantity - 1)} className="p-1.5 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
-                  <Minus className="w-3 h-3" />
+                <button onClick={() => updateQuantity(item.variant_id, item.quantity - 1)} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
+                  <Minus className="w-4 h-4" />
                 </button>
-                <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                <button onClick={() => updateQuantity(item.variant_id, item.quantity + 1)} className="p-1.5 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
-                  <Plus className="w-3 h-3" />
+                <span className="w-8 text-center font-bold text-base">{item.quantity}</span>
+                <button onClick={() => updateQuantity(item.variant_id, item.quantity + 1)} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
+                  <Plus className="w-4 h-4" />
                 </button>
               </div>
               <button onClick={() => removeItem(item.variant_id)} className="p-2 text-neutral-400 hover:text-red-500 transition-colors">
-                <Trash2 className="w-4 h-4" />
+                <Trash2 className="w-5 h-5" />
               </button>
             </div>
           ))
@@ -237,7 +237,7 @@ export default function SellPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-tight whitespace-nowrap transition-all border ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-tight whitespace-nowrap transition-all border ${
                     activeCategory === cat
                       ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/10"
                       : "bg-white dark:bg-neutral-950 text-neutral-500 border-neutral-200 dark:border-neutral-800 hover:border-primary/20"
@@ -303,9 +303,9 @@ export default function SellPage() {
                                 updateQuantity(v.id, cartItem.quantity - 1);
                                 if (cartItem.quantity === 1) removeItem(v.id);
                               }}
-                              className="absolute -left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-red-500 shadow-md hover:scale-110 active:scale-90 transition-all z-10"
+                              className="absolute -left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-red-500 shadow-md hover:scale-110 active:scale-90 transition-all z-10"
                             >
-                              <Minus className="w-3 h-3" />
+                              <Minus className="w-4 h-4" />
                             </button>
                           )}
                         </div>
