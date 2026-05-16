@@ -64,7 +64,7 @@ export default function SellPage() {
   };
 
   // Shared Cart Component for Drawer and Sidebar
-  const CartUI = ({ isSidebar = false }) => (
+  const renderCartUI = (isSidebar = false) => (
     <div className={`flex flex-col h-full ${isSidebar ? "" : "w-full"}`}>
       <div className="p-6 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -321,7 +321,7 @@ export default function SellPage() {
 
       {/* Right Column: Sticky Sidebar Cart (Visible on desktop) */}
       <aside className="hidden lg:flex w-80 2xl:w-96 border-l border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 flex-col h-full sticky top-0">
-        <CartUI isSidebar={true} />
+        {renderCartUI(true)}
       </aside>
 
       {/* Mobile Cart Drawer Overlay */}
@@ -329,7 +329,7 @@ export default function SellPage() {
         <div className="fixed inset-0 z-50 flex justify-end animate-in fade-in duration-300 lg:hidden">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
           <div className="relative w-full max-w-md bg-white dark:bg-neutral-950 shadow-2xl h-full flex flex-col animate-in slide-in-from-right duration-300">
-            <CartUI isSidebar={false} />
+            {renderCartUI(false)}
           </div>
         </div>
       )}
