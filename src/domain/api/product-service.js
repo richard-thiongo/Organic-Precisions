@@ -34,6 +34,15 @@ export const productService = {
   // Get Analytics Stats
   getStats: () => `${API_BASE_URL}/sales/stats`,
 
+  // Get Reports Manually by Date Range
+  getReports: async (startDate, endDate) => {
+    const res = await fetch(`${API_BASE_URL}/sales/reports?start_date=${startDate}&end_date=${endDate}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    });
+    return res.json();
+  },
+
   // Update stock level
   updateStock: async (stockData) => {
     const res = await fetch(`${API_BASE_URL}/products/stock`, {

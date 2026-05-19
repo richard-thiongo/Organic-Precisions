@@ -191,6 +191,22 @@ export default function DashboardPage() {
             </div>
             <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
           </Link>
+
+          <Link 
+            href="/dashboard/analytics"
+            className="flex-1 flex items-center justify-between p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary/50 transition-all group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 group-hover:bg-primary group-hover:text-white transition-colors">
+                <Calendar className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="font-bold">View Reports</p>
+                <p className="text-[10px] opacity-60 text-neutral-400">Generate Sales Reports</p>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+          </Link>
         </div>
       </div>
 
