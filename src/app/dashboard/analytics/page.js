@@ -182,7 +182,7 @@ export default function AnalyticsPage() {
                           </div>
                           <div>
                             <p className="font-bold">Transaction #{sale.sale_id}</p>
-                            <p className="text-xs text-neutral-500">{formatDate(sale.sale_date)}</p>
+                            <p className="text-sm text-neutral-600 dark:text-white font-medium">{formatDate(sale.sale_date)}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-4 justify-between md:justify-end border-t md:border-t-0 pt-4 md:pt-0 border-neutral-100 dark:border-neutral-800">
