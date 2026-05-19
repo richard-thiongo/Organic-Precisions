@@ -14,8 +14,8 @@ export function ServerWakeup() {
     // Ping interval: 13 minutes (in milliseconds)
     const PING_INTERVAL = 13 * 60 * 1000;
     
-    // Fallback to the environment URL, otherwise assume standard API path
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://organic-precisions-api.onrender.com/api";
+    // Use the environment API URL
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     // We ping the root of the API or a specific health endpoint.
     // Usually, the health check is at the root domain or `/health`. 
     // Assuming standard REST setup, let's just do a lightweight fetch to the base endpoint or health.
