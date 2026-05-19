@@ -22,6 +22,7 @@ import { Header } from "@/ui/components/header";
 import { BottomNav } from "@/ui/components/bottom-nav";
 import { Toaster } from "sonner";
 import { ServerWakeup } from "@/ui/components/server-wakeup";
+import { SwipeNavigation } from "@/ui/components/swipe-navigation";
 
 export default function RootLayout({ children }) {
   return (
@@ -36,9 +37,9 @@ export default function RootLayout({ children }) {
           <Toaster position="top-center" expand={false} richColors />
           <SessionGuard>
             <Header />
-            <main className="flex-1 pb-20">
+            <SwipeNavigation className="flex-1 pb-20">
               {children}
-            </main>
+            </SwipeNavigation>
             <BottomNav />
           </SessionGuard>
         </ThemeProvider>
